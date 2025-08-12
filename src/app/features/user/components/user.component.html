@@ -1,0 +1,14 @@
+<div class="container-fluid mt-5">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-8">
+      <form  [formGroup]="form">
+        <formly-form
+          [form]="form"
+          [fields]="fields"
+          [model]="model"
+        ></formly-form>
+      </form>
+    </div>
+    <pre class="col-7">{{ model | json }}</pre>
+  </div>
+</div>
