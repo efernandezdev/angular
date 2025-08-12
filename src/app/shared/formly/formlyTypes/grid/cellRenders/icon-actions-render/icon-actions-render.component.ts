@@ -14,7 +14,7 @@ interface Action {
     <span class="d-flex mt-2 justify-content-center">
       <ng-container *ngFor="let action of actions">
         <mat-icon
-          class="outline"
+          class="material-symbols-outlined mx-1"
           [matTooltip]="action?.tooltip || ''"
           style="cursor: pointer"
           (click)="onActionClick(action)"

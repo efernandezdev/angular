@@ -18,7 +18,6 @@ export const userGrid = ({
     props: {
       gridOptions: {
         defaultColDef: {
-          sortable: true,
           flex: 1,
           resizable: true,
         },
@@ -30,9 +29,14 @@ export const userGrid = ({
           { headerName: 'Nombre', field: 'name' },
           { headerName: 'Email', field: 'email' },
           {
-            headerClass: 'd-flex justify-content-center',
             headerName: 'Acciones',
-            flex: 0.8,
+            headerClass: 'headerCenter',
+            flex: 0,
+            maxWidth: 170,
+            minWidth: 100,
+            resizable: false,
+            sortable: false,
+            filter: false,
             pinned: 'right',
             cellRenderer: IconActionsRenderComponent,
             cellRendererParams: {

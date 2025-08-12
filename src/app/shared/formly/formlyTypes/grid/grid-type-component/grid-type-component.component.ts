@@ -16,6 +16,7 @@ import {
         [gridOptions]="gridOptions"
         [rowData]="model || []"
         (firstDataRendered)="onFirstDataRendered($event)"
+        [suppressDragLeaveHidesColumns]="true"
         (gridReady)="onGridReady($event)"
       >
       </ag-grid-angular>
