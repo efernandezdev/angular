@@ -1,20 +1,30 @@
-<h2 mat-dialog-title>{{ data.title }}</h2>
-<mat-dialog-content>
-  <form *ngIf="fields.length > 0" [formGroup]="form">
-    <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
-  </form>
+<header class="border-bottom">
+  <h2 mat-dialog-title>{{ data.title }}</h2>
+</header>
+<section>
+  <mat-dialog-content>
+    <form *ngIf="fields.length > 0" [formGroup]="form">
+      <formly-form
+        [form]="form"
+        [fields]="fields"
+        [model]="model"
+      ></formly-form>
+    </form>
 
-  <p *ngIf="!fields.length">{{ data.message }}</p>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button (click)="onCancel()">{{ data.cancelText }}</button>
-  <button
-    mat-raised-button
-    color="primary"
-    (click)="onConfirm()"
-    [disabled]="fields.length > 0 && !form.valid"
-    cdkFocusInitial
-  >
-    {{ data.confirmText }}
-  </button>
-</mat-dialog-actions>
+    <p *ngIf="!fields.length">{{ data.message }}</p>
+  </mat-dialog-content>
+</section>
+<footer class="border-top">
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">{{ data.cancelText }}</button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onConfirm()"
+      [disabled]="fields.length > 0 && !form.valid"
+      cdkFocusInitial
+    >
+      {{ data.confirmText }}
+    </button>
+  </mat-dialog-actions>
+</footer>

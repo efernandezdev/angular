@@ -3,17 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './core/components/layout/layout.component';
 
 const routes: Routes = [
- {
-    path: '',
+  {
+    path: 'user',
     component: LayoutComponent,
     children: [
       {
-        path: 'user',
+        path: '',
         loadChildren: () =>
           import('./features/user/user.module').then((m) => m.UserModule),
       },
     ],
- }
+  },
+  { path: '**', redirectTo: '/user', pathMatch: 'full' },
 ];
 
 @NgModule({

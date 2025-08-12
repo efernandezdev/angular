@@ -44,6 +44,7 @@ export const userGrid = ({
                     userService.getPostsByUserID(data.id).subscribe((resp) => {
                       dialogService.openConfirmDialog({
                         height: 'auto',
+                        width: '800px',
                         disableClose: true,
                         title: `${data.name}-Comments`,
                         model: { comments: resp },
