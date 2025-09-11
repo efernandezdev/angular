@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FieldArrayType } from '@ngx-formly/core';
 import {
   FirstDataRenderedEvent,
   GridOptions,
   GridReadyEvent,
 } from 'ag-grid-community';
+
 @Component({
   selector: 'formly-field-grid',
   template: `
@@ -24,14 +25,16 @@ import {
   `,
 })
 export class GridTypeComponent extends FieldArrayType implements OnInit {
+  @HostListener('window:resize')
+  onResize() {
+    this.gridOptions.api?.sizeColumnsToFit();
+  }
+
   gridOptions: GridOptions = {};
-  style: any = {};
+  style: { [key: string]: string } = {};
 
   ngOnInit() {
-    this.style = {
-      width: this.props['width'],
-      height: this.props['height'],
-    };
+    this.style = { width: this.props['width'], height: this.props['height'] };
 
     const gridOptions: GridOptions = this.props['gridOptions'] || {};
 
@@ -39,7 +42,7 @@ export class GridTypeComponent extends FieldArrayType implements OnInit {
   }
 
   onGridReady(params: GridReadyEvent) {
-    if (this.formState) {
+    if (this.formState && this.field?.key) {
       this.formState[this.field.key as string] = params.api;
     }
   }
